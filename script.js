@@ -1,4 +1,3 @@
-// ---------- Data ----------
 const STORAGE_KEY = "notebook-posts";
 
 const samplePosts = [
@@ -58,7 +57,6 @@ let activeCategory = "All";
 
 const app = document.getElementById("app");
 
-// ---------- Helpers ----------
 function escapeHTML(str) {
   const div = document.createElement("div");
   div.textContent = str;
@@ -79,7 +77,6 @@ function paragraphs(text) {
   return text.split(/\n\n+/).map(p => `<p>${escapeHTML(p)}</p>`).join("");
 }
 
-// ---------- Views ----------
 function renderHome() {
   const categories = ["All", ...new Set(posts.map(p => p.category))];
 
@@ -182,7 +179,7 @@ function renderForm(id) {
   const existing = id ? posts.find(p => p.id === id) : null;
 
   if (id && !existing) {
-    renderPost(id); // shows the "not available" state
+    renderPost(id); 
     return;
   }
 
@@ -255,7 +252,6 @@ function renderForm(id) {
   });
 }
 
-// ---------- Router ----------
 function router() {
   const [, page, id] = (location.hash || "#/").split("/");
   window.scrollTo(0, 0);
