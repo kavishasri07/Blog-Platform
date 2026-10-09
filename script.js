@@ -13,7 +13,7 @@ const samplePosts = [
     id: "2",
     title: "A Beginner's Map of Machine Learning",
     author: "Riya Sharma",
-    category: "AI",
+    category: "AI and Machine Learning",
     date: "2026-09-20",
     content: "Machine learning is mostly three ideas: data, a model that guesses, and a way to measure how wrong the guess was.\n\nPick one small dataset and one simple model, and get a full loop working before touching anything fancy."
   },
@@ -177,7 +177,6 @@ function renderPost(id) {
 
 function renderForm(id) {
   const existing = id ? posts.find(p => p.id === id) : null;
-
   if (id && !existing) {
     renderPost(id); 
     return;
@@ -226,7 +225,6 @@ function renderForm(id) {
       el.textContent = errors[el.dataset.for] || "";
     });
     if (Object.keys(errors).length) return;
-
     if (existing) {
       Object.assign(existing, {
         title: data.title.trim(),
@@ -255,7 +253,6 @@ function renderForm(id) {
 function router() {
   const [, page, id] = (location.hash || "#/").split("/");
   window.scrollTo(0, 0);
-
   if (page === "post") renderPost(id);
   else if (page === "new") renderForm();
   else if (page === "edit") renderForm(id);
